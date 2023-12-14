@@ -1,0 +1,33 @@
+import requests
+
+def fetch_migration_data():
+    # Замените URL на источник данных о миграции
+    migration_api_url = "https://example.com/migration/api"
+
+    try:
+        response = requests.get(migration_api_url)
+
+        # Проверка успешности запроса
+        if response.status_code == 200:
+            migration_data = response.json()
+            return migration_data
+        else:
+            print(f"Ошибка запроса: {response.status_code}")
+            return None
+
+    except requests.RequestException as e:
+        print(f"Ошибка запроса: {e}")
+        return None
+
+def process_migration_data(migration_data):
+    if migration_data:
+        # Обработка данных о миграции здесь
+        print("Данные о миграции получены успешно.")
+        print("Пример обработки данных:")
+        print(migration_data)
+    else:
+        print("Не удалось получить данные о миграции.")
+
+if __name__ == "__main__":
+    migration_data = fetch_migration_data()
+    process_migration_data(migration_data)
